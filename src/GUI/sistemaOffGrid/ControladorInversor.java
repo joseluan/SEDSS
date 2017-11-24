@@ -82,7 +82,7 @@ public class ControladorInversor extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(2, 130, 65));
-        jLabel12.setText("Numero de Strings");
+        jLabel12.setText("Número de Strings");
 
         add2.setBackground(new java.awt.Color(1, 127, 66));
         add2.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N

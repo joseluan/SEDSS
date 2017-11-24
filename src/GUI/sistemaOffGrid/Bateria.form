@@ -71,16 +71,16 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel10" min="-2" pref="198" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="capacidade" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="add2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="add3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="tensaoBanco" min="-2" pref="169" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="capacidade" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tensaoBanco" alignment="0" pref="169" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -230,7 +230,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="82" red="2" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Autonomia do sistema em dias"/>
+            <Property name="text" type="java.lang.String" value="Auton&#xf4;mia do sistema em dias"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="tensaoBanco">
@@ -248,7 +248,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="82" red="2" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tens&#xe3;o da banco (V)"/>
+            <Property name="text" type="java.lang.String" value="Tens&#xe3;o do banco (V)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="add2">

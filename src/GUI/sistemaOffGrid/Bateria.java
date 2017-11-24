@@ -102,13 +102,13 @@ public class Bateria extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(2, 130, 65));
-        jLabel8.setText("Autonomia do sistema em dias");
+        jLabel8.setText("Autonômia do sistema em dias");
 
         tensaoBanco.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(2, 130, 65));
-        jLabel10.setText("Tensão da banco (V)");
+        jLabel10.setText("Tensão do banco (V)");
 
         add2.setBackground(new java.awt.Color(1, 127, 66));
         add2.setFont(new java.awt.Font("Phetsarath OT", 0, 18)); // NOI18N
@@ -158,14 +158,14 @@ public class Bateria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(capacidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(add2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(add3))
-                            .addComponent(tensaoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(capacidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tensaoBanco, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
