@@ -112,7 +112,7 @@ public class CalcularEquipamentos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(195, 15, 11));
-        jLabel1.setText("SISTEMA ON GRID - EQUIPAMENTOS POR DIA");
+        jLabel1.setText("SISTEMA ON GRID - EQUIPAMENTOS ");
 
         jLabel2.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(1, 1, 1));
@@ -124,7 +124,7 @@ public class CalcularEquipamentos extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(2, 130, 65));
-        jLabel7.setText("Tempo (h)");
+        jLabel7.setText("Tempo (h/dia)");
 
         tempo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
         tempo.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N

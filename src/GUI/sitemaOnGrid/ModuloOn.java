@@ -5,10 +5,16 @@
  */
 package GUI.sitemaOnGrid;
 
+import GUI.utils.Dados;
 import GUI.utils.Mensagem;
+import GUI.utils.Posicionamento;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  *
@@ -19,13 +25,26 @@ public class ModuloOn extends javax.swing.JFrame {
     /**
      * Creates new form Modulo
      */
+    HashMap cidades = new HashMap();
 
     public ModuloOn() {
         initComponents();
         this.setLocationRelativeTo(null);
-        URL url = this.getClass().getResource("/GUI/utils/imagens/logo.jpeg");  
-        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(url);  
+        URL url = this.getClass().getResource("/GUI/utils/imagens/logo.jpeg");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(url);
         this.setIconImage(iconeTitulo);
+        
+        cidades = Dados.cidadesRN();
+        Set<String> chavesSet = cidades.keySet();
+        ArrayList<String> chaves = new ArrayList(chavesSet);
+        Collections.sort(chaves);
+        for (String chave : chaves) {
+            if(chave != null){
+                String[] cidade = (String[]) cidades.get(chave);
+                cidadesRN.addItem(cidade[0]);
+            }     
+        }
+        
     }
 
     /**
@@ -37,6 +56,7 @@ public class ModuloOn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -55,6 +75,10 @@ public class ModuloOn extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tensaoCA = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
+        cidadesRN = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        radioCidade = new javax.swing.JRadioButton();
+        radioRadiacao = new javax.swing.JRadioButton();
 
         setTitle("SEDSS");
         setResizable(false);
@@ -81,6 +105,7 @@ public class ModuloOn extends javax.swing.JFrame {
         jLabel10.setText("Radiação solar (kWh/m2/dia)");
 
         radiacaoSolar.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        radiacaoSolar.setEnabled(false);
         radiacaoSolar.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
         radiacaoSolar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,47 +174,87 @@ public class ModuloOn extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(2, 130, 65));
         jLabel15.setText("Tensão de circuito aberto");
 
+        cidadesRN.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N
+        cidadesRN.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cidadesRNItemStateChanged(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(2, 130, 65));
+        jLabel11.setText("Escolha uma cidade do RN");
+
+        buttonGroup1.add(radioCidade);
+        radioCidade.setSelected(true);
+        radioCidade.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                radioCidadeStateChanged(evt);
+            }
+        });
+
+        buttonGroup1.add(radioRadiacao);
+        radioRadiacao.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                radioRadiacaoStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(consumoMM, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(calcularConsumo))
-                            .addComponent(potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14))
-                        .addGap(10, 10, 10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radiacaoSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tensaoCA, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(135, 135, 135))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addGap(3, 3, 3)
+                                            .addComponent(radioRadiacao)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(radiacaoSolar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(consumoMM, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(calcularConsumo))
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(208, 208, 208)
+                                        .addComponent(add4)
+                                        .addGap(183, 183, 183))
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(eficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(potencia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(92, 92, 92)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel15)
+                                            .addComponent(tensaoCA, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(radioCidade)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cidadesRN, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(add4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,41 +266,49 @@ public class ModuloOn extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cidadesRN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(radioCidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radiacaoSolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(consumoMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(calcularConsumo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(3, 3, 3)
-                                .addComponent(eficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(3, 3, 3)
-                                .addComponent(potencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(radiacaoSolar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioRadiacao)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(3, 3, 3)
-                        .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(consumoMM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(calcularConsumo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel15)
+                        .addGap(9, 9, 9)
+                        .addComponent(tensaoCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel13)
                         .addGap(3, 3, 3)
-                        .addComponent(tensaoCA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(potencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(3, 3, 3)
+                        .addComponent(eficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(3, 3, 3)
+                        .addComponent(area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(add4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -244,17 +317,22 @@ public class ModuloOn extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+        
+    private void mudarValor() {
+        String cidadeSelecionada = cidadesRN.getSelectedItem().toString();
+        String[] dados = (String[]) cidades.get(cidadeSelecionada);
+        Float irradiancia = Float.parseFloat(dados[4]) * 1000;
+        radiacaoSolar.setValue(irradiancia);
+    }
 
     private void calcularConsumoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularConsumoActionPerformed
         CalcularEquipamentos ce = new CalcularEquipamentos();
@@ -267,39 +345,47 @@ public class ModuloOn extends javax.swing.JFrame {
 
     private void add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add4ActionPerformed
         try {
-            Double consumoMensal = Double.parseDouble(consumoMM.getValue().toString());
-            Double radicao = Double.parseDouble(radiacaoSolar.getValue().toString());
-            Double potenciaModulo = Double.parseDouble(potencia.getValue().toString());
-            Double eficienciaModulo = Double.parseDouble(eficiencia.getValue().toString());
-            Double areaModulo = Double.parseDouble(area.getValue().toString());
-            Double tensao = Double.parseDouble(tensaoCA.getValue().toString());
-            
-            if (consumoMensal > 0 && radicao > 0 &&
-                radicao > 0 && potenciaModulo > 0 &&
-                eficienciaModulo > 0 && eficienciaModulo > 0 && 
-                areaModulo > 0) {
-                
-                Double energiaDiaria = radicao*areaModulo*(eficienciaModulo/100);
+            Float consumoMensal = Float.parseFloat(consumoMM.getValue().toString());
+            Float radicao = Float.parseFloat(radiacaoSolar.getValue().toString());
+            Float potenciaModulo = Float.parseFloat(potencia.getValue().toString());
+            Float eficienciaModulo = Float.parseFloat(eficiencia.getValue().toString());
+            Float areaModulo = Float.parseFloat(area.getValue().toString());
+            Float tensao = Float.parseFloat(tensaoCA.getValue().toString());
+
+            if (consumoMensal > 0 && radicao > 0
+                    && radicao > 0 && potenciaModulo > 0
+                    && eficienciaModulo > 0 && eficienciaModulo > 0
+                    && areaModulo > 0) {
+
+                Float energiaDiaria = radicao * areaModulo * (eficienciaModulo / 100);
                 energiaDiaria /= 1000;
                 energiaDiaria *= 30;
+
+                Float numeroModulo = consumoMensal / energiaDiaria;
+                Double tensaoESInversor = numeroModulo * tensao * 1.1;
+                Float potenciaInversor = numeroModulo * potenciaModulo;
+                String[] dados = (String[]) cidades.get(cidadesRN.getSelectedItem().toString());
+                String[] latitude = dados[1].split(" ");
+                Float grausLa = Float.parseFloat(latitude[0]);
                 
-                Double numeroModulo = consumoMensal/energiaDiaria;
-                long numeroInteiro = Math.round(numeroModulo);
-                Double tensaoESInversor = numeroInteiro*tensao*1.1;
-                Double potenciaInversor = numeroInteiro*potenciaModulo;
-                
-                Mensagem m = new Mensagem("para produzir "+consumoMensal+" kWh/mês são necessários "+numeroInteiro+
-                                          " módulos fotovoltaicos de "+potenciaModulo+" W.\n"+
-                                                  
-                                          "Dimensionamento do inversor:\n\n"+
-                                          "Então o inversor deve ser capaz de suportar a potência"+
-                                          " máxima de "+potenciaInversor+" W"+
-                                          " e a tensão de entrada de "+tensaoESInversor+" V.",
-                                          
-                                          "Dados do sistema on grid");
-                m.setVisible(true); 
-                
-            }else{
+                Mensagem m = new Mensagem(
+                        "Para produzir " + consumoMensal + " kWh/mês são necessários " 
+                        + Math.ceil(numeroModulo) + " módulos fotovoltaicos na forma econômica\n"
+                        + Math.round(numeroModulo) + " módulos fotovoltaicos na forma com proteção\n"
+                        + " os módulos deveram ter a potência de " + potenciaModulo + " W.\n"
+                        + "--------------------------------------------------------------\n"
+                        + "Dimensionamento do inversor:\n"
+                        + "Então o inversor deve ser capaz de suportar a potência"
+                        + " máxima de " + potenciaInversor + " W"
+                        + " e a tensão de entrada de " + tensaoESInversor + " V.\n"
+                        + "---------------------------------------------------------\n"
+                        + "Os módulos devem ser posicionados para o emisfério "
+                        +Posicionamento.esmisferio(grausLa)+"\n"
+                        + "Com uma angulação de "+Posicionamento.angulacao(grausLa)+"º",
+                        "Dados do sistema on grid");
+                m.setVisible(true);
+
+            } else {
                 Mensagem m = new Mensagem("Houve um erro, tente novamente!", "Dados do circuito");
                 m.setVisible(true);
             }
@@ -320,6 +406,32 @@ public class ModuloOn extends javax.swing.JFrame {
     private void calcularConsumoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calcularConsumoMouseEntered
         calcularConsumo.setToolTipText("Calcular o consumo médio mensal do sistema");
     }//GEN-LAST:event_calcularConsumoMouseEntered
+
+    private void cidadesRNItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cidadesRNItemStateChanged
+        mudarValor();
+    }//GEN-LAST:event_cidadesRNItemStateChanged
+
+    private void radioCidadeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_radioCidadeStateChanged
+        if (radioCidade.isSelected()) {
+            radiacaoSolar.setEnabled(false);
+            cidadesRN.setEnabled(true);
+            mudarValor();
+        } else if (radioRadiacao.isSelected()) {
+            radiacaoSolar.setEnabled(true);
+            cidadesRN.setEnabled(false);
+        }
+    }//GEN-LAST:event_radioCidadeStateChanged
+
+    private void radioRadiacaoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_radioRadiacaoStateChanged
+        if (radioCidade.isSelected()) {
+            radiacaoSolar.setEnabled(false);
+            cidadesRN.setEnabled(true);
+            mudarValor();
+        } else if (radioRadiacao.isSelected()) {
+            radiacaoSolar.setEnabled(true);
+            cidadesRN.setEnabled(false);
+        }
+    }//GEN-LAST:event_radioRadiacaoStateChanged
 
     /**
      * @param args the command line arguments
@@ -356,11 +468,14 @@ public class ModuloOn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add4;
     private javax.swing.JFormattedTextField area;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton calcularConsumo;
+    private javax.swing.JComboBox<String> cidadesRN;
     private javax.swing.JFormattedTextField consumoMM;
     private javax.swing.JFormattedTextField eficiencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -371,6 +486,9 @@ public class ModuloOn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JFormattedTextField potencia;
     private javax.swing.JFormattedTextField radiacaoSolar;
+    private javax.swing.JRadioButton radioCidade;
+    private javax.swing.JRadioButton radioRadiacao;
     private javax.swing.JFormattedTextField tensaoCA;
     // End of variables declaration//GEN-END:variables
+
 }

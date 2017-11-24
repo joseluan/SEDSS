@@ -169,7 +169,8 @@ public class ControladorInversor extends javax.swing.JFrame {
                 Double correnteNM = (numeroString * correnteCC)*1.3;
                 Double potenciaMinima = potencia*1.3;
                 Mensagem m = new Mensagem("Dimensionamento do controlador de carga:\n"
-                        + "Corrente nominal mínima de "+correnteNM+" A e tensão de "+tensao_BB+" V.\n\n"
+                        + "Corrente nominal mínima de "+correnteNM+" A e tensão de "+tensao_BB+" V.\n"
+                        + "--------------------------------------------------------------\n"
                         + "Dimensionamento do inversor:\n"
                         + "Dessa forma, o inversor deve ser capaz de operar"
                         + " com uma potência mínima de "+potenciaMinima+" W e tensão de "+tensao_BB+" V.", "Dados do circuito");

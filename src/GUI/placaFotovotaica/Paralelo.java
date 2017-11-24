@@ -5,11 +5,11 @@
  */
 package GUI.placaFotovotaica;
 
+import GUI.utils.Mensagem;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -197,12 +197,14 @@ public class Paralelo extends javax.swing.JFrame {
                     && voltagemD > 0) {
                 Double nova_corrente = quantidadeI * correnteD;
 
-                JOptionPane.showMessageDialog(null, "Voltagem = " + voltagemD
+                Mensagem m = new Mensagem("Voltagem = " + voltagemD
                         + "\nCorrente = " + nova_corrente,
-                        "Dados do circuito", WIDTH);
+                        "Dados do circuito");
+                m.setVisible(true);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Dados em falta ou inválidos!", "Dados do circuito", WIDTH);
+        } catch (HeadlessException | NumberFormatException e) {
+            Mensagem m = new Mensagem("Dados em falta ou inválidos!", "Dados do circuito");
+            m.setVisible(true);
         }
     }//GEN-LAST:event_mistoActionPerformed
 

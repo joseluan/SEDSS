@@ -5,6 +5,7 @@
  */
 package GUI.placaFotovotaica;
 
+import GUI.utils.Mensagem;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
@@ -208,12 +209,14 @@ public class Misto extends javax.swing.JFrame {
                 Double voltagem_string = mod_string * voltagem_modulo;
                 Double corrente_string = num_string * corrente_modulo;
 
-                JOptionPane.showMessageDialog(null, "Voltagem de saída = " + voltagem_string + " V"
+                Mensagem m = new Mensagem("Voltagem de saída = " + voltagem_string + " V"
                         + "\nCorrente de saída = " + corrente_string + " A",
-                        "Dados do circuito", WIDTH);
+                        "Dados do circuito");
+                m.setVisible(true);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Dados em falta ou inválidos!", "Dados do circuito", WIDTH);
+        } catch (NumberFormatException e) {
+            Mensagem m = new Mensagem("Dados em falta ou inválidos!", "Dados do circuito");
+            m.setVisible(true);
         }
     }//GEN-LAST:event_misto1ActionPerformed
 

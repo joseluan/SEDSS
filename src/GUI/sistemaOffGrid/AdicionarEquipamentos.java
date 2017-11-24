@@ -124,7 +124,7 @@ public class AdicionarEquipamentos extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("UnGraphic", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(2, 130, 65));
-        jLabel7.setText("Tempo (h)");
+        jLabel7.setText("Tempo (h/dia)");
 
         tempo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
         tempo.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 18)); // NOI18N

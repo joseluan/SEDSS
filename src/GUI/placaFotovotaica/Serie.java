@@ -5,6 +5,7 @@
  */
 package GUI.placaFotovotaica;
 
+import GUI.utils.Mensagem;
 import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -205,13 +206,15 @@ public class Serie extends javax.swing.JFrame {
                     && nova_voltagem > 0
                     && nova_corrente > 0) {
 
-                JOptionPane.showMessageDialog(null, "Potência = " + nova_potencia
+                Mensagem m = new Mensagem("Potência = " + nova_potencia
                         + "\nVoltagem = " + nova_voltagem
                         + "\nCorrente = " + corrente.getValue().toString(),
-                        "Dados do circuito", WIDTH);
+                        "Dados do circuito");
+                m.setVisible(true);
             }
         } catch (HeadlessException | NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Dados em falta ou inválidos!", "Dados do circuito", WIDTH);
+            Mensagem m = new Mensagem("Dados em falta ou inválidos!", "Dados do circuito");
+            m.setVisible(true);
         }
     }//GEN-LAST:event_mistoActionPerformed
 
